@@ -1,9 +1,8 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const logger = require("morgan");
+const mongoose = require("mongoose");
 const routes = require("./routes/apiRoutes");
 const htmlRoutes = require("./routes/htmlRoutes");
-
 
 require('dotenv').config();
 
@@ -17,6 +16,8 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+
+//connect MongoDB with Mongoose
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Workout", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
