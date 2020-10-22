@@ -24,9 +24,6 @@ const workoutSchema = new Schema({
             weight: {
                 type: Number
             },
-            distance: {
-                type: Number
-            },
             sets: {
                 type: Number
             },
