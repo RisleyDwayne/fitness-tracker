@@ -2,32 +2,32 @@ const express = require("express");
 const router = express.Router();
 const db = require("../models");
 
-//get workouts
+
 router.get("/workouts", (req, res) => {
-    db.Workout.find({}).then(
-        (workout) => {
+    db.Workout.find({})
+        .then(workout => {
             res.json(workout);
         }).catch((err) => {
-            console.log(err);
+            res.json(err);
         });
 });
 
 router.get("/workouts/range", (req, res) => {
-    db.Workout.find({}).then(
-        (workout) => {
+    db.Workout.find({})
+        .then(workout => {
             res.json(workout);
         }).catch((err) => {
-            console.log(err);
+            res.json(err);
         });
 });
 
-//create workout
+// Create new workout
 router.post("/workouts", (req, res) => {
     db.Workout.create({})
-        .then((workout) => {
+        .then(workout => {
             res.json(workout);
-        }).catch((err) => {
-            console.log(err);
+        }).catch(err => {
+            res.json(err);
         });
 });
 
@@ -40,6 +40,8 @@ router.post("/workouts/range", (req, res) => {
         })
 })
 
+
+// Add exercises to workout
 router.put("/workouts/:id", ({ body, params }, res) => {
     db.Workout.findByIdAndUpdate(
         params.id,
@@ -51,8 +53,9 @@ router.put("/workouts/:id", ({ body, params }, res) => {
         })
         .catch(err => {
             res.json(err);
-            console.log(err);
         });
 });
+
+
 
 module.exports = router;
