@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../models");
 
 
-router.get("/workouts", (req, res) => {
+router.get("/workouts/", (req, res) => {
     db.Workout.find({})
         .then(workout => {
             res.json(workout);
